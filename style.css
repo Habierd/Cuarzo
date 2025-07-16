@@ -1,0 +1,321 @@
+/* Estilos Generales del Cuerpo */
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna y limpia, similar a la de vercatalogo.com */
+    text-align: center; /* Centra el contenido principal */
+    margin: 0; /* Elimina el margen predeterminado del body */
+    background-color: #f9f9f9; /* Un gris muy claro, casi blanco */
+    color: #333; /* Un gris oscuro para el texto general */
+    line-height: 1.6;
+}
+
+/* Importar fuente de Google Fonts (agrega esto al inicio de tu CSS o en el <head> del HTML) */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap'); */
+
+
+/* BARRA SUPERIOR (Top Bar - Envío/Info General) */
+.top-bar {
+    background-color: #e9e9e9; /* Un gris claro para la barra superior */
+    color: #666; /* Texto gris más suave */
+    padding: 8px 0;
+    font-size: 0.85em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* BARRA DE PROMOCIONES (Promo Bar) - Más sutil o como un banner simple */
+.promo-bar {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px 0;
+    font-size: 0.95em;
+    font-weight: 500; /* Un poco más grueso */
+    color: #e74c3c; /* Un rojo anaranjado para destacar promociones */
+    border-bottom: 1px solid #eee;
+}
+
+.promo-bar .promo-link {
+    color: #e74c3c; /* Color de enlace igual al texto */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.promo-bar .promo-link:hover {
+    color: #c0392b;
+}
+
+/* ENCABEZADO PRINCIPAL (Logo, Buscador, Navegación) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px; /* Ajustar padding */
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Sombra sutil y moderna */
+}
+
+.header-left,
+.header-right,
+.header-center {
+    flex: 1; /* Distribuye el espacio equitativamente */
+    display: flex;
+    align-items: center;
+}
+
+.header-left {
+    justify-content: flex-start; /* Buscador a la izquierda */
+}
+
+.header-center {
+    justify-content: center; /* Logo al centro */
+    flex: 1.5; /* Dar más espacio al centro para el logo */
+}
+
+.header-right {
+    justify-content: flex-end; /* Navegación a la derecha */
+}
+
+/* CAMPO DE BÚSQUEDA */
+.search-box {
+    padding: 10px 15px;
+    border: 1px solid #ddd; /* Borde más suave */
+    border-radius: 25px; /* Bordes redondeados para un look moderno */
+    width: 180px; /* Ancho ajustado */
+    font-size: 0.9em;
+    outline: none; /* Elimina el contorno al enfocar */
+    transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+    border-color: #b0c4de; /* Color sutil al enfocar */
+}
+
+/* IDENTIDAD DE MARCA (Logo y Eslogan) */
+.brand-identity {
+    text-align: center;
+    margin: 0;
+    padding: 0; /* Asegurarse de que no haya padding extra */
+}
+
+/* Estilos para la Imagen del Logo */
+.logo {
+    max-width: 280px; /* Reducir un poco el tamaño para un look más compacto */
+    height: auto;
+    display: block;
+    margin: 0 auto 3px auto; /* Centrar y un espacio muy pequeño debajo */
+    /* Para el centrado visual si es asimétrico, podrías necesitar un ajuste muy fino aquí: */
+    /* margin-left: calc(50% - (ancho-logo/2) - ajuste-visual-px); */
+    /* Por ahora, dejaremos el 0 auto. Si sigue descentrado, es el primer lugar a mirar. */
+}
+
+/* Estilo para el Eslogan */
+.slogan {
+    font-size: 0.9em; /* Eslogan más pequeño y discreto */
+    color: #777; /* Gris más suave */
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: normal; /* Quitar cursiva para un look más serio/profesional */
+    font-weight: 400;
+}
+
+/* NAVEGACIÓN PRINCIPAL */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 25px; /* Espacio entre los ítems de navegación */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555; /* Color de enlace un poco más suave */
+    font-weight: 500;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #d1b49f; /* Tu color de acento al pasar el mouse */
+}
+
+/* SECCIÓN DE PRODUCTOS DESTACADOS */
+.featured-products {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+/* TÍTULOS DE SECCIÓN (como "PRODUCTOS DESTACADOS") */
+h2 {
+    color: #444;
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Más espaciado para un look premium */
+    font-weight: 700;
+}
+
+/* CUADRÍCULA DE PRODUCTOS */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* TARJETA DE PRODUCTO INDIVIDUAL */
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #efefef; /* Borde muy sutil */
+    border-radius: 8px;
+    padding: 25px; /* Más padding para que respire */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); /* Sombra ligeramente más pronunciada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-8px); /* Efecto más notorio al pasar el mouse */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 20px; /* Más espacio debajo de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien */
+}
+
+.product-card h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.product-card .price {
+    font-size: 1.1em;
+    color: #d1b49f; /* Tu color de acento para los precios */
+    font-weight: 700; /* Precio más destacado */
+    margin-bottom: 20px;
+}
+
+/* BOTONES */
+.button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #d1b49f; /* Tu color de acento (rosa palo/terracota) */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px; /* Botones más redondeados */
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Eliminar borde si lo hay */
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #bb9f8b; /* Tono un poco más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* PIE DE PÁGINA PRINCIPAL */
+.main-footer {
+    background-color: #222; /* Un negro más suave para el pie de página */
+    color: #e0e0e0; /* Texto gris claro */
+    padding: 25px 0;
+    margin-top: 60px;
+    font-size: 0.85em;
+    border-top: 1px solid #333;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+@media (max-width: 992px) { /* Tabletas y pantallas más pequeñas */
+    .main-header {
+        padding: 15px 20px;
+    }
+    .header-center {
+        flex: 1.2; /* Ajustar el flex para el centro en tabletas */
+    }
+    .logo {
+        max-width: 250px; /* Reducir el logo para tabletas */
+    }
+    .main-nav li {
+        margin-left: 15px;
+    }
+    .product-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) { /* Móviles y tabletas pequeñas */
+    .main-header {
+        flex-direction: column; /* Apilar elementos en pantallas pequeñas */
+        padding: 15px 15px;
+    }
+
+    .header-left,
+    .header-right,
+    .header-center {
+        flex: none; /* Desactivar flex-grow */
+        width: 100%; /* Ocupar todo el ancho disponible */
+        justify-content: center; /* Centrar contenido */
+        margin-bottom: 15px; /* Espacio entre secciones apiladas */
+    }
+
+    .search-box {
+        width: 90%; /* Hacer el buscador más ancho para móviles */
+        max-width: 300px; /* Limitar el ancho máximo */
+    }
+
+    .logo {
+        max-width: 200px; /* Reducir el logo para móviles */
+        margin-left: 0; /* Quitar el margen negativo aquí para evitar problemas en móviles */
+    }
+
+    .slogan {
+        font-size: 0.85em; /* Ajusta el tamaño del eslogan en móviles */
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap; /* Permitir que los ítems de navegación se envuelvan */
+        justify-content: center;
+    }
+
+    .main-nav li {
+        margin: 5px 10px; /* Espacio entre ítems de navegación */
+    }
+
+    h2 {
+        font-size: 1.8em; /* Reduce el tamaño de los títulos en móviles */
+        margin-bottom: 30px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+        padding: 0 15px;
+    }
+
+    .product-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) { /* Teléfonos muy pequeños */
+    .logo {
+        max-width: 160px; /* Un tamaño aún más pequeño para pantallas muy reducidas */
+    }
+    .slogan {
+        font-size: 0.8em;
+    }
+    h2 {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+}

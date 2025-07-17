@@ -1,283 +1,311 @@
-/* --- Base y Reseteo --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Estilos Generales del Cuerpo */
 body {
-    font-family: 'Arial', sans-serif; /* O la fuente que uses en tu página */
+    font-family: 'Inter', sans-serif; /* Priorizamos Inter para el texto general */
+    text-align: center;
+    margin: 0;
+    background-color: #1a1a1a; /* Un negro muy oscuro para el fondo */
+    color: #e0e0e0; /* Un gris claro para el texto general */
     line-height: 1.6;
-    background-color: #000; /* Fondo negro como en tu sitio */
-    color: #f4f4f4; /* Texto principal claro para contrastar */
+    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
-a {
-    color: #A0B9C0; /* Color de enlace, puedes ajustarlo */
-    text-decoration: none;
+/* --- Animaciones y Efectos --- */
+.slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+    opacity: 0; /* Asegura que el elemento esté oculto antes de la animación */
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-a:hover {
-    text-decoration: underline;
+.sparkle {
+    position: relative;
+    overflow: hidden; /* Para contener la pseudo-clase */
+}
+.sparkle::after {
+    content: '\2728'; /* Carácter unicode de brillo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem;
+    opacity: 0;
+    animation: sparkle 0.6s ease forwards;
+}
+@keyframes sparkle {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
 }
 
-/* --- Header --- */
-header {
-    background-color: #1a1a1a; /* Un gris oscuro para el header */
-    color: #f4f4f4;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    border-bottom: 1px solid #333; /* Borde sutil */
+/* --- Header y Navegación --- */
+#main-header {
+    background-color: #0d0d0d; /* Fondo del header aún más oscuro */
+    border-bottom: 1px solid #333;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #A0B9C0; /* Color del logo, como el acento dorado/claro */
+#main-header h1 {
+    font-family: 'Montserrat', sans-serif; /* Montserrat para el título principal */
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.4); /* Sombra para el título */
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
+.nav-button {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.nav-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(52, 211, 153, 0.3); /* Sombra para los botones de navegación */
 }
 
-nav ul li {
-    margin-left: 20px;
+/* --- Catálogo de Productos --- */
+#product-catalog {
+    padding: 3rem 2rem; /* Más padding para el catálogo */
+    gap: 2rem; /* Espacio entre productos */
 }
 
-nav ul li a {
-    color: #f4f4f4;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #A0B9C0; /* Color de hover para los enlaces */
-}
-
-/* --- Hero Section --- */
-.hero {
-    background: url('images/hero_background.jpg') no-repeat center center/cover; /* Asegúrate de tener esta imagen */
-    height: 70vh;
+.product-card {
+    background-color: #2a2a2a; /* Fondo más oscuro para las tarjetas */
+    border: 1px solid #444;
+    border-radius: 12px; /* Bordes más redondeados */
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Alineación del texto dentro de la tarjeta */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 0 20px;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Efecto de elevación y ligero aumento */
+    box-shadow: 0 12px 25px rgba(52, 211, 153, 0.3); /* Sombra con color de acento */
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 100%; /* Crea un contenedor cuadrado para la imagen */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #333;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que quepa en el contenedor cuadrado */
+    object-position: center; /* Centra la imagen */
+    transition: transform 0.4s ease-in-out;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05); /* Zoom ligero en la imagen al pasar el mouse */
+}
+
+.product-card .p-5 {
+    padding: 1.25rem; /* Ajuste del padding interno */
+    flex-grow: 1; /* Permite que el contenido crezca */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem; /* Ajuste para el espacio debajo del título */
+}
+
+.product-card p.text-pink-500 {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0.5rem; /* Espacio para el precio */
     margin-bottom: 1rem;
-    color: #A0B9C0; /* Un color de acento para el título principal */
 }
 
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.product-card button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(52, 211, 153, 0.2);
 }
 
-.btn {
-    background-color: #A0B9C0; /* Color del botón principal */
+/* --- Sección de Pago --- */
+#pago {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+#pago h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+}
+
+.payment-option img {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-option img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
+}
+
+/* --- Botón de WhatsApp --- */
+.whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
     color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    border-radius: 50%;
+    width: 65px; /* Un poco más grande */
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem; /* Icono más grande */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 }
-
-.btn:hover {
-    background-color: #7d9ba4;
-    text-decoration: none;
-}
-
-/* --- Products Section --- */
-.products {
-    padding: 4rem 5%;
-    text-align: center;
-}
-
-.products h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #A0B9C0; /* Título de sección en color de acento */
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.product-item {
-    background-color: #1a1a1a; /* Fondo oscuro para cada tarjeta de producto */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.product-item:hover {
-    transform: translateY(-5px);
-}
-
-.product-item img {
-    max-width: 100%;
-    height: 250px; /* Altura fija para las imágenes */
-    object-fit: cover; /* Recorta la imagen para llenar el espacio */
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.product-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #f4f4f4;
-}
-
-.product-item p {
-    font-size: 1rem;
-    color: #bbb;
-    margin-bottom: 10px;
-}
-
-.product-item .price {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #A0B9C0; /* Color de acento para el precio */
-    margin-bottom: 20px;
+.whatsapp-button:hover {
+    transform: scale(1.2);
+    background-color: #1DA851; /* Un tono más oscuro al pasar el mouse */
 }
 
 /* --- Footer --- */
 footer {
-    background-color: #1a1a1a;
-    color: #f4f4f4;
-    text-align: center;
-    padding: 2rem 0;
+    background-color: #0d0d0d;
     border-top: 1px solid #333;
 }
 
-.social-links a {
-    color: #f4f4f4;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #A0B9C0;
-}
-
-/* --- Botón de Comprar Producto (NUEVO) --- */
-.buy-button {
-    background-color: #A0B9C0; /* Color de fondo, ajusta al color de tu marca */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.buy-button:hover {
-    background-color: #7d9ba4; /* Color de fondo al pasar el mouse */
-}
-
-/* --- Modal del QR (NUEVO) --- */
-.qr-modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Fijo en la pantalla */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Cubre todo el ancho */
-    height: 100%; /* Cubre toda la altura */
-    overflow: auto; /* Permite scroll si el contenido es muy grande */
-    background-color: rgba(0,0,0,0.8); /* Fondo semi-transparente oscuro */
-    justify-content: center; /* Centrar horizontalmente con flexbox */
-    align-items: center; /* Centrar verticalmente con flexbox */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque, si lo soporta el navegador */
-}
-
-.qr-content {
-    background-color: #fefefe; /* Fondo del cuadro del QR */
-    margin: auto; /* Centrar el contenido dentro del modal */
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%; /* Ancho del cuadro del QR */
-    max-width: 400px; /* Ancho máximo para evitar que sea demasiado grande en pantallas grandes */
-    position: relative;
-    text-align: center;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.5); /* Sombra más pronunciada */
-    animation: fadeInScale 0.3s ease-out forwards; /* Animación de aparición */
-}
-
-.qr-image {
-    max-width: 100%; /* Asegura que la imagen no se desborde */
-    height: auto;
-    display: block; /* Elimina espacio extra debajo de la imagen */
-    margin: 0 auto 15px auto; /* Centra la imagen y añade margen inferior */
-    border: 1px solid #ddd; /* Borde sutil para la imagen del QR */
-}
-
-.close-button {
-    color: #888;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: #555;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Animación para la aparición del modal */
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1024px) { /* Laptops y tablets grandes */
+    #product-catalog {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 2rem 1.5rem;
     }
 }
 
-/* --- Responsive Design (Ejemplo básico) --- */
-@media (max-width: 768px) {
-    .hero h1 {
+@media (max-width: 768px) { /* Tablets y móviles */
+    #main-header {
+        padding: 1.5rem 1rem;
+    }
+    #main-header h1 {
         font-size: 2.5rem;
     }
-
-    .hero p {
-        font-size: 1.2rem;
+    #main-header p {
+        font-size: 0.95rem;
     }
+    nav {
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }
+    .nav-button {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.2rem;
+    }
+    #product-catalog {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+    .product-card {
+        padding: 1rem;
+    }
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+    .product-card p.text-pink-500 {
+        font-size: 1.8rem;
+    }
+    .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    #pago {
+        padding: 2rem;
+        margin: 2rem auto;
+    }
+    #pago h2 {
+        font-size: 2rem;
+    }
+    .payment-option img {
+        width: 180px;
+        height: 180px;
+    }
+    .payment-option p {
+        font-size: 1rem;
+    }
+}
 
-    nav ul {
+@media (max-width: 480px) { /* Móviles pequeños */
+    #main-header img {
+        width: 100px;
+    }
+    #main-header h1 {
+        font-size: 2rem;
+    }
+    #main-header p {
+        font-size: 0.85rem;
+    }
+    #main-header div span {
+        font-size: 0.8rem;
+    }
+    nav {
         flex-direction: column;
         align-items: center;
     }
-
-    nav ul li {
-        margin: 10px 0;
+    .nav-button {
+        width: 90%;
+        max-width: 250px;
     }
-
-    .product-grid {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    #product-catalog {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .product-card .p-5 {
+        padding: 1rem;
+    }
+    .product-card h3 {
+        font-size: 1rem;
+    }
+    .product-card p.text-pink-500 {
+        font-size: 1.5rem;
+    }
+    .product-card button {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    #pago {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+    #pago h2 {
+        font-size: 1.8rem;
+    }
+    #pago p {
+        font-size: 0.9rem;
+    }
+    .payment-option img {
+        width: 150px;
+        height: 150px;
     }
 }

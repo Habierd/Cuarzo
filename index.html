@@ -3,125 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUARZO</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
+    <title>Quarzo - Ropa de Lujo Accesible</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-black text-white">
+<body>
 
-<header id="main-header" class="bg-black py-6 px-4 flex flex-col items-center border-b border-gray-700">
-    <img src="images/logo.png" alt="Logo QUARZO" class="w-32 mb-3"> 
-    <h1 class="text-3xl font-bold text-teal-300">QUARZO</h1>
-    <p class="text-md text-gray-300 mt-1">La moda que mereces al precio que te conviene</p>
-    <div class="text-sm mt-4 flex flex-col items-center gap-2 text-gray-400">
-        <span><i class="fas fa-phone-alt mr-2 text-teal-400"></i>+57 318 1094497</span>
-        <span><i class="fas fa-map-marker-alt mr-2 text-teal-400"></i>Medellín, Antioquia</span>
-        <span><i class="fas fa-clock mr-2 text-teal-400"></i>Lunes a Viernes, 8am a 7pm</span>
+    <header>
+        <div class="logo">QUARZO</div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Tienda</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Descubre el Lujo al Alcance de tu Mano</h1>
+            <p>Estilo sofisticado, calidad excepcional, precios irresistibles.</p>
+            <a href="#products-section" class="btn">Explorar Colección</a>
+        </section>
+
+        <section id="products-section" class="products">
+            <h2>Nuestros Productos Destacados</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="images/producto1.jpg" alt="Camisa de Lino Élite">
+                    <h3>Camisa de Lino Élite</h3>
+                    <p>Una camisa esencial para cualquier ocasión.</p>
+                    <p class="price">$59.99</p>
+                    <button class="buy-button" onclick="showQR()">Comprar Producto</button>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/producto2.jpg" alt="Pantalón Casual Premium">
+                    <h3>Pantalón Casual Premium</h3>
+                    <p>Comodidad y estilo para tu día a día.</p>
+                    <p class="price">$74.50</p>
+                    <button class="buy-button" onclick="showQR()">Comprar Producto</button>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/producto3.jpg" alt="Vestido de Noche Glamour">
+                    <h3>Vestido de Noche Glamour</h3>
+                    <p>Brilla con elegancia en cada evento.</p>
+                    <p class="price">$120.00</p>
+                    <button class="buy-button" onclick="showQR()">Comprar Producto</button>
+                </div>
+
+                <div class="product-item">
+                    <img src="images/producto4.jpg" alt="Chaqueta Urbana Minimalista">
+                    <h3>Chaqueta Urbana Minimalista</h3>
+                    <p>Toque moderno para tu guardarropa.</p>
+                    <p class="price">$89.99</p>
+                    <button class="buy-button" onclick="showQR()">Comprar Producto</button>
+                </div>
+
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quarzo. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <div id="qr-modal" class="qr-modal">
+        <div class="qr-content">
+            <span class="close-button" onclick="hideQR()">&times;</span>
+            <img src="images/qr_bancolombia.png" alt="QR Bancolombia" class="qr-image">
+            <p>Escanea para comprar</p>
+        </div>
     </div>
-</header>
 
-<nav class="flex flex-wrap justify-center gap-3 mt-8 px-4">
-    <button class="nav-button bg-gray-800 hover:bg-teal-600 px-6 py-3 rounded-full transition-all duration-300 text-white font-semibold">Todos</button>
-    <button class="nav-button bg-gray-800 hover:bg-teal-600 px-6 py-3 rounded-full transition-all duration-300 text-white font-semibold">TENIS DE HOMBRE</button>
-    <button class="nav-button bg-gray-800 hover:bg-teal-600 px-6 py-3 rounded-full transition-all duration-300 text-white font-semibold">TENIS DE MUJER</button>
-    <button class="nav-button bg-gray-800 hover:bg-teal-600 px-6 py-3 rounded-full transition-all duration-300 text-white font-semibold">PRÓXIMOS LANZAMIENTOS</button>
-</nav>
-
-<main id="product-catalog" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-8">
     <script>
-        const productos = [
-            {
-                nombre: "Jordan Retro 1 Low Milan",
-                precio: "145.000",
-                tallas: "35, 36, 37, 38",
-                img: "https://i0.wp.com/shoopsneakers.com/wp-content/uploads/2022/09/low-milan-1.jpg?resize=768%2C768&ssl=1"
-            },
-            {
-                nombre: "Nike Air Force 1 '07",
-                precio: "155.000",
-                tallas: "36, 37, 38, 39",
-                img: "https://nikeco.vtexassets.com/arquivos/ids/197141-800-auto?v=638343774235900000&width=800&height=auto&aspect=true"
-            },
-            {
-                nombre: "Adidas Yeezy Boost 350",
-                precio: "210.000",
-                tallas: "38, 39, 40, 41",
-                img: "https://cdn-images.farfetch-contents.com/14/16/97/21/14169721_20127255_2048.jpg"
-            },
-            {
-                nombre: "Puma RS-X",
-                precio: "130.000",
-                tallas: "35, 36, 37",
-                img: "https://cdn-images.farfetch-contents.com/14/14/72/70/14147270_18767491_1000.jpg"
-            },
-            {
-                nombre: "Reebok Club C 85",
-                precio: "120.000",
-                tallas: "36, 37, 38",
-                img: "https://reebokcol.vtexassets.com/arquivos/ids/1083556/100074449_1.jpg?v=638646148194300000"
-            },
-            {
-                nombre: "New Balance 550",
-                precio: "195.000",
-                tallas: "37, 38, 39",
-                img: "https://cdn-images.farfetch-contents.com/20/51/04/93/20510493_50443710_2048.jpg"
-            },
-        ];
-        window.onload = () => {
-            const main = document.querySelector('#product-catalog'); // Usamos el ID
-            productos.forEach(p => {
-                const div = document.createElement('div');
-                div.className = "bg-gray-900 text-white rounded-xl overflow-hidden slide-in product-card shadow-lg"; // Clases de Tailwind y tu clase
-                div.innerHTML = `
-                    <div class="image-container">
-                        <img src="${p.img}" class="product-image" alt="${p.nombre}">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-xl mb-2 truncate text-teal-200">${p.nombre}</h3>
-                        <p class="text-3xl font-extrabold text-pink-500 mb-2">CO$ ${p.precio}</p>
-                        <p class="text-sm text-gray-400 mb-4">Tallas: ${p.tallas}</p>
-                        <button onclick="animar(this)" class="mt-2 w-full bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition-all duration-300 font-semibold text-lg">Ver producto</button>
-                    </div>
-                `;
-                main.appendChild(div);
-            });
+        // Función para mostrar el QR
+        function showQR() {
+            document.getElementById('qr-modal').style.display = 'flex'; // Usamos 'flex' para centrar
         }
-        function animar(btn) {
-            btn.classList.add('sparkle');
-            setTimeout(() => btn.classList.remove('sparkle'), 600);
+
+        // Función para ocultar el QR
+        function hideQR() {
+            document.getElementById('qr-modal').style.display = 'none';
+        }
+
+        // Opcional: Cerrar el modal haciendo clic fuera de la imagen (o en el fondo oscuro)
+        window.onclick = function(event) {
+            let modal = document.getElementById('qr-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
         }
     </script>
-</main>
-
-<section id="pago" class="p-8 text-center bg-gray-900 mx-auto max-w-4xl rounded-lg shadow-xl my-12">
-    <h2 class="text-3xl font-bold mb-5 text-teal-300">Métodos de Pago</h2>
-    <p class="text-lg text-gray-300 mb-6">Escanea el código QR o usa uno de los botones de pago para facilitar tu compra.</p>
-    <div class="flex justify-center gap-8 flex-wrap mt-6">
-        <div class="payment-option">
-            <img src="/mnt/data/7e69a3da-066a-4f2e-b19d-e259ddcc320a.png" alt="QR Bancolombia" class="rounded-lg border-4 border-teal-500 w-64 h-64 object-cover mx-auto shadow-md">
-            <p class="mt-3 text-lg font-semibold text-white">Bancolombia</p>
-        </div>
-        <div class="payment-option">
-            <img src="/mnt/data/c42892e6-cb64-473a-bef4-f9e4c418e90d.png" alt="QR Nequi" class="rounded-lg border-4 border-pink-500 w-64 h-64 object-cover mx-auto shadow-md">
-            <p class="mt-3 text-lg font-semibold text-white">Nequi</p>
-        </div>
-    </div>
-    <p class="text-md text-gray-400 mt-8">Después de realizar tu pago, por favor envía una captura de pantalla del comprobante a nuestro WhatsApp para confirmar tu pedido y agilizar el envío.</p>
-</section>
-
-<a href="https://wa.me/573181094497" target="_blank" class="whatsapp-button">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-800 bg-gray-900">
-    &copy; 2025 QUARZO. Todos los derechos reservados. Diseñado con <i class="fas fa-heart text-red-500"></i> para ti.
-</footer>
 
 </body>
 </html>

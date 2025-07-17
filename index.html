@@ -3,87 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dieguito y su Cuarzo</title>
+    <title>Catálogo - Cuarzo</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            transition: transform 0.2s ease-in-out;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        /* Styles for the modal */
+        #paymentModal.hidden {
+            display: none;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-    <header class="top-bar">
-        <p>📦 Envio Gratis en compras superiores a $150.000 | 🚚 Envíos a todo Colombia</p>
-    </header>
-
-    <nav class="promo-bar">
-        <a href="#" class="promo-link">🔥 ¡Descubre las Rebajas de Verano! Hasta 50% OFF 🔥</a>
-    </nav>
-
-    <header class="main-header">
-        <div class="header-left">
-            <input type="search" placeholder="Buscar productos..." class="search-box">
-        </div>
-
-        <div class="header-center">
-            <div class="brand-identity">
-                <img src="images/logo-dieguito-cuarzo.png" alt="Logo de Dieguito y su Cuarzo" class="logo">
-                <p class="slogan">El poder de la tierra en tus manos.</p>
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Cuarzo</a>
+            <div class="w-full max-w-md hidden sm:block">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-search text-gray-400"></i></span>
+                    <input type="text" class="w-full pl-10 pr-4 py-2 border rounded-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Buscar productos...">
+                </div>
             </div>
-        </div>
-
-        <div class="header-right">
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Tienda</a></li>
-                    <li><a href="#">Novedades</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
+            <a href="https://wa.me/573183016020" target="_blank" class="bg-gray-800 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-gray-900 transition-colors">
+                <i class="fab fa-whatsapp"></i>
+                <span class="hidden md:inline">Contactar</span>
+            </a>
         </div>
     </header>
 
-    <main class="featured-products">
-        <h2>PRODUCTOS DESTACADOS</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250?text=Cuarzo+Amatista" alt="Cuarzo Amatista">
-                <h3>Cuarzo Amatista</h3>
-                <p class="price">$55.000</p>
-                <button class="button add-to-cart">Ver Detalles</button>
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 sm:p-6">
+        
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-xl font-semibold text-gray-700">Todos los productos</h1>
+            <div class="relative">
+                <select class="appearance-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option>Ordenar por defecto</option>
+                    <option>Precio: bajo a alto</option>
+                    <option>Precio: alto a bajo</option>
+                    <option>Más nuevos</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"><i class="fas fa-chevron-down text-xs"></i></div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-200 product-card transition-shadow duration-300">
+                <img src="https://placehold.co/400x400/F3F4F6/333333?text=Zapato+1" alt="Imagen de un zapato deportivo" class="w-full h-auto object-cover">
+                <div class="p-3 text-center">
+                    <h3 class="font-medium text-sm text-gray-800 truncate product-name">Zapatilla Runner Pro</h3>
+                    <p class="text-indigo-600 font-semibold mt-1 product-price">$1,200.00</p>
+                    <button class="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-md transition-colors view-product-btn">
+                        Ver producto
+                    </button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250?text=Cuarzo+Rosa" alt="Cuarzo Rosa">
-                <h3>Cuarzo Rosa</h3>
-                <p class="price">$48.000</p>
-                <button class="button add-to-cart">Ver Detalles</button>
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-200 product-card transition-shadow duration-300">
+                <img src="https://placehold.co/400x400/E5E7EB/333333?text=Zapato+2" alt="Imagen de un zapato casual" class="w-full h-auto object-cover">
+                <div class="p-3 text-center">
+                    <h3 class="font-medium text-sm text-gray-800 truncate product-name">Mocasín Urbano</h3>
+                    <p class="text-indigo-600 font-semibold mt-1 product-price">$950.00</p>
+                    <button class="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-md transition-colors view-product-btn">
+                        Ver producto
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-200 product-card transition-shadow duration-300">
+                <img src="https://placehold.co/400x400/D1D5DB/333333?text=Zapato+3" alt="Imagen de unas botas de cuero" class="w-full h-auto object-cover">
+                <div class="p-3 text-center">
+                    <h3 class="font-medium text-sm text-gray-800 truncate product-name">Bota de Cuero Clásica</h3>
+                    <p class="text-indigo-600 font-semibold mt-1 product-price">$1,800.00</p>
+                    <button class="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-md transition-colors view-product-btn">
+                        Ver producto
+                    </button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250?text=Piedra+Luna" alt="Piedra Luna">
-                <h3>Piedra Luna</h3>
-                <p class="price">$62.000</p>
-                <button class="button add-to-cart">Ver Detalles</button>
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-200 product-card transition-shadow duration-300">
+                <img src="https://placehold.co/400x400/9CA3AF/FFFFFF?text=Zapato+4" alt="Imagen de unas sandalias" class="w-full h-auto object-cover">
+                <div class="p-3 text-center">
+                    <h3 class="font-medium text-sm text-gray-800 truncate product-name">Sandalia Verano</h3>
+                    <p class="text-indigo-600 font-semibold mt-1 product-price">$750.00</p>
+                    <button class="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-md transition-colors view-product-btn">
+                        Ver producto
+                    </button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250?text=Cuarzo+Cristal" alt="Cuarzo Cristal">
-                <h3>Cuarzo Cristal</h3>
-                <p class="price">$45.000</p>
-                <button class="button add-to-cart">Ver Detalles</button>
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-200 product-card transition-shadow duration-300">
+                <img src="https://placehold.co/400x400/FBCFE8/333333?text=Zapato+5" alt="Imagen de un zapato" class="w-full h-auto object-cover">
+                <div class="p-3 text-center">
+                    <h3 class="font-medium text-sm text-gray-800 truncate product-name">Tenis Clásico Blanco</h3>
+                    <p class="text-indigo-600 font-semibold mt-1 product-price">$890.00</p>
+                    <button class="w-full mt-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-md transition-colors view-product-btn">
+                        Ver producto
+                    </button>
+                </div>
             </div>
-
         </div>
     </main>
 
-    <footer class="main-footer">
-        <p>&copy; 2025 Dieguito y su Cuarzo. Todos los derechos reservados.</p>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/573001234567?text=Hola!%20Estoy%20interesado%20en%20un%20producto." target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 border-t">
+        <div class="container mx-auto py-6 px-4 text-center text-gray-600">
+            <p>&copy; 2024 Cuarzo. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
+        <div class="max-w-md w-full bg-white rounded-xl shadow-md overflow-hidden relative">
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            <div class="p-8">
+                <div class="text-center">
+                    <h1 class="text-2xl font-bold text-gray-900">Realiza tu Pago</h1>
+                    <p class="mt-2 text-gray-600">Sigue los pasos para completar tu compra.</p>
+                </div>
+
+                <div class="mt-8">
+                    <h2 class="text-lg font-semibold text-gray-800">Paso 1: Escanea el Código QR</h2>
+                    <p class="text-gray-500 text-sm mt-1">Usa la aplicación de tu banco para escanear la imagen.</p>
+                    
+                    <div class="flex justify-center mt-4">
+                        <!-- IMPORTANT: Replace this with your actual QR code image -->
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Sube+tu+QR+aqu%C3%AD" alt="Código QR para realizar el pago" class="rounded-lg border-4 border-gray-200">
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <p class="text-gray-600">Valor a pagar:</p>
+                        <p id="modal-product-price" class="text-3xl font-bold text-indigo-600">$0.00</p>
+                        <p id="modal-product-name" class="text-xs text-gray-500">(Nombre del producto)</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 border-t pt-6">
+                    <h2 class="text-lg font-semibold text-gray-800">Paso 2: Confirma tu Pago</h2>
+                    <p class="text-gray-500 text-sm mt-1">Una vez realizado el pago, envíanos el comprobante por WhatsApp para coordinar el envío.</p>
+                    
+                    <a href="https://wa.me/573001234567?text=Hola!%20Acabo%20de%20realizar%20un%20pago%20y%20quiero%20enviar%20mi%20comprobante." target="_blank" class="w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center space-x-3 transition-colors">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Enviar Comprobante por WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Payment Modal
+        const viewProductBtns = document.querySelectorAll('.view-product-btn');
+        const paymentModal = document.getElementById('paymentModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalProductName = document.getElementById('modal-product-name');
+        const modalProductPrice = document.getElementById('modal-product-price');
+
+        // Function to open the modal
+        const openModal = (e) => {
+            // Find the parent product card
+            const productCard = e.target.closest('.p-3');
+            
+            // Get product name and price from the card
+            const productName = productCard.querySelector('.product-name').textContent;
+            const productPrice = productCard.querySelector('.product-price').textContent;
+
+            // Update the modal with the product info
+            modalProductName.textContent = `(${productName})`;
+            modalProductPrice.textContent = productPrice;
+            
+            // Show the modal
+            paymentModal.classList.remove('hidden');
+        };
+
+        // Function to close the modal
+        const closeModal = () => {
+            paymentModal.classList.add('hidden');
+        };
+
+        // Add event listeners to all "Ver producto" buttons
+        viewProductBtns.forEach(btn => {
+            btn.addEventListener('click', openModal);
+        });
+
+        // Add event listener to the close button
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Add event listener to close the modal when clicking outside the content
+        paymentModal.addEventListener('click', (e) => {
+            if (e.target === paymentModal) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -1,316 +1,311 @@
 /* Estilos Generales del Cuerpo */
 body {
-    font-family: 'Montserrat', sans-serif; /* Fuente moderna y limpia */
-    text-align: center; /* Centra el contenido principal */
-    margin: 0; /* Elimina el margen predeterminado del body */
-    background-color: #f9f9f9; /* Un gris muy claro, casi blanco */
-    color: #333; /* Un gris oscuro para el texto general */
+    font-family: 'Inter', sans-serif; /* Priorizamos Inter para el texto general */
+    text-align: center;
+    margin: 0;
+    background-color: #1a1a1a; /* Un negro muy oscuro para el fondo */
+    color: #e0e0e0; /* Un gris claro para el texto general */
     line-height: 1.6;
+    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
-/* BARRA SUPERIOR (Top Bar - Envío/Info General) */
-.top-bar {
-    background-color: #e9e9e9; /* Un gris claro para la barra superior */
-    color: #666; /* Texto gris más suave */
-    padding: 8px 0;
-    font-size: 0.85em;
-    border-bottom: 1px solid #ddd;
+/* --- Animaciones y Efectos --- */
+.slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+    opacity: 0; /* Asegura que el elemento esté oculto antes de la animación */
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* BARRA DE PROMOCIONES (Promo Bar) - Más sutil o como un banner simple */
-.promo-bar {
-    background-color: #ffffff; /* Fondo blanco */
-    padding: 10px 0;
-    font-size: 0.95em;
-    font-weight: 500;
-    color: #e74c3c; /* Un rojo anaranjado para destacar promociones */
-    border-bottom: 1px solid #eee;
+.sparkle {
+    position: relative;
+    overflow: hidden; /* Para contener la pseudo-clase */
+}
+.sparkle::after {
+    content: '\2728'; /* Carácter unicode de brillo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem;
+    opacity: 0;
+    animation: sparkle 0.6s ease forwards;
+}
+@keyframes sparkle {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
 }
 
-.promo-bar .promo-link {
-    color: #e74c3c;
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* --- Header y Navegación --- */
+#main-header {
+    background-color: #0d0d0d; /* Fondo del header aún más oscuro */
+    border-bottom: 1px solid #333;
 }
 
-.promo-bar .promo-link:hover {
-    color: #c0392b;
-}
-
-/* ENCABEZADO PRINCIPAL (Logo, Buscador, Navegación) */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
-.header-left,
-.header-right,
-.header-center {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.header-left {
-    justify-content: flex-start;
-}
-
-.header-center {
-    justify-content: center;
-    flex: 1.5; /* Dar más espacio al centro para el logo */
-}
-
-.header-right {
-    justify-content: flex-end;
-}
-
-/* CAMPO DE BÚSQUEDA */
-.search-box {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    width: 180px;
-    font-size: 0.9em;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.search-box:focus {
-    border-color: #b0c4de;
-}
-
-/* IDENTIDAD DE MARCA (Logo y Eslogan) */
-.brand-identity {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-/* Estilos para la Imagen del Logo */
-.logo {
-    max-width: 280px; /* Tamaño para el logo */
-    height: auto;
-    display: block;
-    margin: 0 auto 3px auto; /* Centrar horizontalmente y pequeño espacio debajo */
-    /* Si el logo de "Dieguito y su Cuarzo" es asimétrico, puedes ajustar aquí: */
-    /* margin-left: calc(50% - (ancho-logo/2) - Xpx); donde Xpx es el ajuste visual */
-}
-
-/* Estilo para el Eslogan */
-.slogan {
-    font-size: 0.9em;
-    color: #777;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-style: normal;
-    font-weight: 400;
-}
-
-/* NAVEGACIÓN PRINCIPAL */
-.main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.main-nav li {
-    margin-left: 25px;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    font-size: 1em;
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: #d1b49f; /* Color de acento para los enlaces de navegación */
-}
-
-/* SECCIÓN DE PRODUCTOS DESTACADOS */
-.featured-products {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-}
-
-/* TÍTULOS DE SECCIÓN (como "PRODUCTOS DESTACADOS") */
-h2 {
-    color: #444;
-    font-size: 2.2em;
-    margin-top: 0;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+#main-header h1 {
+    font-family: 'Montserrat', sans-serif; /* Montserrat para el título principal */
     font-weight: 700;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.4); /* Sombra para el título */
 }
 
-/* CUADRÍCULA DE PRODUCTOS */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+.nav-button {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.nav-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(52, 211, 153, 0.3); /* Sombra para los botones de navegación */
 }
 
-/* TARJETA DE PRODUCTO INDIVIDUAL */
+/* --- Catálogo de Productos --- */
+#product-catalog {
+    padding: 3rem 2rem; /* Más padding para el catálogo */
+    gap: 2rem; /* Espacio entre productos */
+}
+
 .product-card {
-    background-color: #ffffff;
-    border: 1px solid #efefef;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    background-color: #2a2a2a; /* Fondo más oscuro para las tarjetas */
+    border: 1px solid #444;
+    border-radius: 12px; /* Bordes más redondeados */
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+    text-align: left; /* Alineación del texto dentro de la tarjeta */
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    transform: translateY(-8px) scale(1.02); /* Efecto de elevación y ligero aumento */
+    box-shadow: 0 12px 25px rgba(52, 211, 153, 0.3); /* Sombra con color de acento */
 }
 
-.product-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    object-fit: cover;
+.image-container {
+    width: 100%;
+    padding-top: 100%; /* Crea un contenedor cuadrado para la imagen */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #333;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que quepa en el contenedor cuadrado */
+    object-position: center; /* Centra la imagen */
+    transition: transform 0.4s ease-in-out;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05); /* Zoom ligero en la imagen al pasar el mouse */
+}
+
+.product-card .p-5 {
+    padding: 1.25rem; /* Ajuste del padding interno */
+    flex-grow: 1; /* Permite que el contenido crezca */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-card h3 {
-    font-size: 1.3em;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.product-card .price {
-    font-size: 1.1em;
-    color: #d1b49f; /* Color de acento para los precios (rosa palo/terracota) */
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* BOTONES */
-.button {
-    display: inline-block;
-    padding: 10px 25px;
-    background-color: #d1b49f; /* Color de acento para los botones */
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 0.95em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none;
-    cursor: pointer;
+    margin-bottom: 0.5rem; /* Ajuste para el espacio debajo del título */
 }
 
-.button:hover {
-    background-color: #bb9f8b; /* Tono más oscuro al pasar el mouse */
-    transform: translateY(-2px);
+.product-card p.text-pink-500 {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0.5rem; /* Espacio para el precio */
+    margin-bottom: 1rem;
 }
 
-/* PIE DE PÁGINA PRINCIPAL */
-.main-footer {
-    background-color: #222; /* Un negro más suave */
-    color: #e0e0e0;
-    padding: 25px 0;
-    margin-top: 60px;
-    font-size: 0.85em;
+.product-card button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(52, 211, 153, 0.2);
+}
+
+/* --- Sección de Pago --- */
+#pago {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+#pago h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+}
+
+.payment-option img {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-option img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
+}
+
+/* --- Botón de WhatsApp --- */
+.whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 65px; /* Un poco más grande */
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem; /* Icono más grande */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+.whatsapp-button:hover {
+    transform: scale(1.2);
+    background-color: #1DA851; /* Un tono más oscuro al pasar el mouse */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #0d0d0d;
     border-top: 1px solid #333;
 }
 
-/* MEDIA QUERIES PARA RESPONSIVIDAD */
-@media (max-width: 992px) { /* Tabletas y pantallas más pequeñas */
-    .main-header {
-        padding: 15px 20px;
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1024px) { /* Laptops y tablets grandes */
+    #product-catalog {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 2rem 1.5rem;
     }
-    .header-center {
-        flex: 1.2;
+}
+
+@media (max-width: 768px) { /* Tablets y móviles */
+    #main-header {
+        padding: 1.5rem 1rem;
     }
-    .logo {
+    #main-header h1 {
+        font-size: 2.5rem;
+    }
+    #main-header p {
+        font-size: 0.95rem;
+    }
+    nav {
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }
+    .nav-button {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.2rem;
+    }
+    #product-catalog {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+    .product-card {
+        padding: 1rem;
+    }
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+    .product-card p.text-pink-500 {
+        font-size: 1.8rem;
+    }
+    .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    #pago {
+        padding: 2rem;
+        margin: 2rem auto;
+    }
+    #pago h2 {
+        font-size: 2rem;
+    }
+    .payment-option img {
+        width: 180px;
+        height: 180px;
+    }
+    .payment-option p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) { /* Móviles pequeños */
+    #main-header img {
+        width: 100px;
+    }
+    #main-header h1 {
+        font-size: 2rem;
+    }
+    #main-header p {
+        font-size: 0.85rem;
+    }
+    #main-header div span {
+        font-size: 0.8rem;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-button {
+        width: 90%;
         max-width: 250px;
     }
-    .main-nav li {
-        margin-left: 15px;
+    #product-catalog {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        padding: 1rem;
+        gap: 1rem;
     }
-    .product-grid {
-        gap: 20px;
+    .product-card .p-5 {
+        padding: 1rem;
     }
-}
-
-@media (max-width: 768px) { /* Móviles y tabletas pequeñas */
-    .main-header {
-        flex-direction: column;
-        padding: 15px 15px;
+    .product-card h3 {
+        font-size: 1rem;
     }
-
-    .header-left,
-    .header-right,
-    .header-center {
-        flex: none;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 15px;
+    .product-card p.text-pink-500 {
+        font-size: 1.5rem;
     }
-
-    .search-box {
-        width: 90%;
-        max-width: 300px;
+    .product-card button {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
     }
-
-    .logo {
-        max-width: 200px;
-        margin-left: 0; /* Asegurarse de que no haya margen negativo aquí */
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+        bottom: 15px;
+        right: 15px;
     }
-
-    .slogan {
-        font-size: 0.85em;
+    #pago {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
     }
-
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+    #pago h2 {
+        font-size: 1.8rem;
     }
-
-    .main-nav li {
-        margin: 5px 10px;
+    #pago p {
+        font-size: 0.9rem;
     }
-
-    h2 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-        padding: 0 15px;
-    }
-
-    .product-card {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 480px) { /* Teléfonos muy pequeños */
-    .logo {
-        max-width: 160px;
-    }
-    .slogan {
-        font-size: 0.8em;
-    }
-    h2 {
-        font-size: 1.5em;
-        letter-spacing: 1px;
+    .payment-option img {
+        width: 150px;
+        height: 150px;
     }
 }
